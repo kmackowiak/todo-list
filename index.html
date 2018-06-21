@@ -19,8 +19,8 @@
             <input id="taskText" type="text" class="form-control" placeholder="Write your task" aria-label="formText" aria-describedby="taskText">
 
             <div class="input-group-append">
-                <select required class="custom-select" id="inputGroupSelect02">
-                    <option selected disabled>Priority</option>
+                <select required class="custom-select" id="taskPriority">
+                    <option selected disabled value="priority">Priority</option>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
                     <option value="high">High</option>
@@ -32,7 +32,7 @@
 
 
 
-        <ul class="list-group">
+        <ul id="list" class="list-group">
 
 
             <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
@@ -41,6 +41,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </li>
+            
             <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
                 <span>A simple secondary list group item</span>
                 <button type="button" class="close" aria-label="Close">
