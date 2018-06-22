@@ -7,31 +7,52 @@
 
 
 function getText() {
-
     var pushButton = document.getElementById("pushButton");
     var taskText = document.getElementById("taskText");
     var writedText = "";
     var taskPriority = document.getElementById("taskPriority");
 
+    // The ability to add a task by pressing enter
+    taskText.addEventListener("keyup", function(e) {
+        e.preventDefault();
+        if (e.keyCode === 13) {
+            addTask();
+        }
+    });
+    // The ability to add a task by pressing "Add" button
     pushButton.addEventListener("click", function(){
+        addTask();
+    });
+};
+
+function addTask(){
+    // Checking if the task is empty
+    if (taskText.value == false) {
+        taskText.classList.add("red-border");
+    }
+    // Checking if the priority is unset
+    else if (taskPriority.value == "priority") {
+        taskPriority.classList.add("red-border");
+    }
+    else {
         writedText = taskText.value;
         taskPriorityValue = taskPriority.value;
         console.log(taskPriorityValue);
-        
+        taskText.value = "";
         createListItem(writedText, taskPriorityValue);
-    });
+    }
 }
 
 
-
-
 function createListItem(writedText, taskPriorityValue) {
+    taskText.classList.remove("red-border");
+    taskPriority.classList.remove("red-border");
 
     var list = document.getElementById("list");
-    
+
     //    Create blank list item
     var listItem = document.createElement("li");
-    
+
     //    Add classes for list item
     listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
     switch (taskPriorityValue) {
@@ -46,12 +67,12 @@ function createListItem(writedText, taskPriorityValue) {
             break;
         case "priority":
             listItem.classList.add("list-group-item-warning");
-    }         
-             
+    }
+
     //    Add text to list item
     var listItemSpan = document.createElement("span");
     listItemSpan.innerHTML = writedText;
-    
+
     //    Add button X for list item
     var listItemButton = document.createElement("button");
     listItemButton.classList.add("close");
@@ -61,16 +82,21 @@ function createListItem(writedText, taskPriorityValue) {
     listItemButton.appendChild(listItemButtonSpan);
     listItemButtonSpan.innerHTML = "&times;";
     listItemButtonSpan.setAttribute("aria-hidden", "True");
-    
+
+    // Add event for delete list item
+    listItemButton.addEventListener("click", function() {
+        if (confirm("Do you want delete this task?")) {
+            listItem.remove();
+        }
+    });
+
     //    Merge elements for list item
     listItem.appendChild(listItemSpan);
     listItem.appendChild(listItemButton);
-    
+
     //    Add list item to list
     list.appendChild(listItem);
 }
-
-
 
 
 getText();
