@@ -1,12 +1,22 @@
 
 
+function createObj() {
+    var itemsId = 0;
+    var itemsId = document.getElementsByClassName("list-group-item").length;
 
 
-
+    const ob = {
+        'taskText': this.writedText,
+        'taskPriority': taskPriority.value,
+    };
+    localStorage.setItem(itemsId, JSON.stringify(ob));
+    const retrievedObject = localStorage.getItem(itemsId);
+}
 
 
 
 function getText() {
+
     var pushButton = document.getElementById("pushButton");
     var taskText = document.getElementById("taskText");
     var writedText = "";
@@ -22,6 +32,7 @@ function getText() {
     // The ability to add a task by pressing "Add" button
     pushButton.addEventListener("click", function(){
         addTask();
+        //getId();
     });
 };
 
@@ -35,11 +46,17 @@ function addTask(){
         taskPriority.classList.add("red-border");
     }
     else {
+
+
         writedText = taskText.value;
         taskPriorityValue = taskPriority.value;
-        console.log(taskPriorityValue);
+
+        //localStorage.setItem(writedText, taskPriorityValue);
+
         taskText.value = "";
         createListItem(writedText, taskPriorityValue);
+
+
     }
 }
 
@@ -96,7 +113,16 @@ function createListItem(writedText, taskPriorityValue) {
 
     //    Add list item to list
     list.appendChild(listItem);
+
+
+
+
+
+    createObj();
+
+
+
 }
 
-
+createObj();
 getText();
