@@ -36,3 +36,69 @@ font-size: 2rem;
     outline:0;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 140, 152, 0.6);
 }
+
+#clearAll
+{
+    font-size: 2rem;
+}
+
+
+
+#clearAll:hover {
+    animation: trashHover 1s ease 0s infinite  ;
+}
+
+@-webkit-keyframes trashHover {
+    0%{
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    20%{
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40%{
+        -webkit-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+    50%{
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    60%{
+        -webkit-transform: translateY(-7px);
+        transform: translateY(-7px);
+    }
+    80%{
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100%{
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes trashHover {
+    0%{
+        transform: translateY(0);
+    }
+    20%{
+        transform: translateY(0);
+    }
+    40%{
+        transform: translateY(-15px);
+    }
+    50%{
+        transform: translateY(0);
+    }
+    60%{
+        transform: translateY(-7px);
+    }
+    80%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
