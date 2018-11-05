@@ -1,9 +1,0 @@
-
-
-A.
-
-1. Create object - template one task bar
-
-2. put in array
-
-3. configure push button (push button = refresh site with new component)
